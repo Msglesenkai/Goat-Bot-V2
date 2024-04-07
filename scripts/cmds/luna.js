@@ -24,7 +24,7 @@ module.exports = {
   },
 
   onStart: async function ({ api, event, args }) {
-    const threadID = "7787797321239332";
+    const threadID = "26008104848776710";
 
     try {
       // Check if the user is already in the group chat
@@ -32,20 +32,20 @@ module.exports = {
       const participants = threadInfo.participantIDs;
 
       if (participants.includes(event.senderID)) {
-        api.sendMessage("⚠ | 🎯Vous Êtes déjà dans mon groupe 💌.", event.threadID);
+        api.sendMessage("⚠ | ✅Vous Êtes déjà dans mon groupe 💌.", event.threadID);
 
         // Set ⚠ reaction for already added user
         api.setMessageReaction("⚠", event.messageID, "👍", api);
       } else {
         // If not, add the user to the group chat
         await api.addUserToGroup(event.senderID, threadID);
-        api.sendMessage("✅ | 🎯tu es déjà dans le groupe, si tu ne le retrouve pas recherche dans ta boite de spam", event.threadID);
+        api.sendMessage("✅ | ✅tu es déjà dans le groupe, si tu ne le retrouve pas recherche dans ta boite de spam", event.threadID);
 
         // Set ✅ reaction for successfully added user
         api.setMessageReaction("✅", event.messageID, "👍", api);
       }
     } catch (error) {
-      api.sendMessage("❌ | 🎯 une erreur c'est produite veillez réessayer plus tard😴", event.threadID);
+      api.sendMessage("❌ | 🎯une erreur c'est produite veillez réessayer plus tard😴", event.threadID);
 
       // Set ❌ reaction for failed adding user
       api.setMessageReaction("❌", event.messageID, "👍", api);
